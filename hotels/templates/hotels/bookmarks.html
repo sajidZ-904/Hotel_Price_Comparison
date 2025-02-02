@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center">Bookmarked Hotels</h2>
+
+    {% if hotels %}
+    <div class="row">
+        {% for hotel in hotels %}
+        <div class="col-md-4">
+            <div class="card mb-3">
+                <img src="{{ hotel.image_url }}" class="card-img-top" alt="{{ hotel.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ hotel.name }}</h5>
+                    <p class="card-text"><strong>Star Rating:</strong> {{ hotel.star_rating }}</p>
+                    <p class="card-text">
+                        <strong>Booking.com Price:</strong> {{ hotel.price_booking|default:"N/A" }} <br>
+                        <strong>Agoda Price:</strong> {{ hotel.price_agoda|default:"N/A" }}
+                    </p>
+                    <p class="card-text"><strong>Best Price:</strong> ${{ hotel.best_price }}</p>
+                    <a href="{{ hotel.booking_url }}" class="btn btn-success btn-sm" target="_blank">View on Booking.com</a>
+                    <a href="{{ hotel.agoda_url }}" class="btn btn-info btn-sm" target="_blank">View on Agoda</a>
+                    <a href="{% url 'bookmark_hotel' hotel.id %}" class="btn btn-danger btn-sm">Remove Bookmark</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="text-muted">No bookmarked hotels yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
