@@ -8,7 +8,7 @@ This is a Django-based hotel price comparison website that scrapes hotel prices 
 
 2. Search hotels by city, price range, and star rating
 
-S3. crape hotel data from Booking.com and Agoda using Scrapy
+3. Scrape hotel data from Booking.com and Agoda using Scrapy
 
 4. Display results with price comparison
 
